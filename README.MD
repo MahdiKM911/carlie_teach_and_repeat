@@ -9,6 +9,11 @@ We added a low-pass filter to the matched frame id!
 
 The low-pass filter reduces erroneous frame jumps.
 
+```Python
+self.smooth_frame_id += 0.1 *( self.current_matched_teach_frame_id - self.smooth_frame_id)
+self.current_matched_teach_frame_id = int(self.smooth_frame_id)
+```
+
 ## Excuse
 We ended up spending 80% of the competition getting carlie into a working state so that we could run the example code.
 
