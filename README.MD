@@ -1,9 +1,22 @@
-# Competition Links
+# Algorithm Explanation
+Our algorithm is based on the example algorithm but with a very minor adjustment. 
 
-[Challenge Details](https://roboticvisionorg.github.io/carlie_docs/competitions/robovis2020_vision_challenge_details.html)
+We added a low-pass filter to the matched frame id!
 
-# Example Documentation
-Below is an example of the documentation we are looking for as part of your submission. Due by 5.00pm (AEST) Tuesday 24th.
+The low-pass filter reduces erroneous frame jumps.
+
+```Python
+# Update low-pass filter
+self.smooth_frame_id += 0.1 *( self.current_matched_teach_frame_id - self.smooth_frame_id)
+
+# Read out the smoothed frame id
+self.current_matched_teach_frame_id = int(self.smooth_frame_id)
+```
+
+## Excuse
+We ended up spending 80% of the competition getting carlie into a working state so that we could run the example code.
+
+Unfortunately we only had time to make a minor adjustment.
 
 ## Image Preprocessing Steps
 The teach and repeat phase image preprocessing steps are:
@@ -26,6 +39,7 @@ The core of our approach is based on normalised cross-correlation (NCC). We comp
 4. Compare the template to each image in the teach frame subset using NCC
     - keep track of the current best match (maximum score)
 5. The matched teach frame is the one with the maximum score
+6. **The matched teach frame is put through a low-pass filter to reduce erroneous frame jumps**
 
 The preprocessing steps are done on lines 209 to 213. The comparison is performed within a for loop, lines 220 to 233.
 
@@ -46,3 +60,7 @@ Lines 242 to 248.
 
 ## Controller Tweaks
 There were no tweaks/changes made to the controller algorithm (you do not need to state changes in parameter values).
+
+# Competition Links
+
+[Challenge Details](https://roboticvisionorg.github.io/carlie_docs/competitions/robovis2020_vision_challenge_details.html)
