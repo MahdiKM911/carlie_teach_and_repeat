@@ -1,7 +1,3 @@
-# Competition Links
-
-[Challenge Details](https://roboticvisionorg.github.io/carlie_docs/competitions/robovis2020_vision_challenge_details.html)
-
 # Algorithm Explanation
 Our algorithm is based on the example algorithm but with a very minor adjustment. 
 
@@ -61,3 +57,7 @@ Lines 242 to 248.
 
 ## Controller Tweaks
 There were no tweaks/changes made to the controller algorithm (you do not need to state changes in parameter values).
+
+# Competition Links
+
+[Challenge Details](https://roboticvisionorg.github.io/carlie_docs/competitions/robovis2020_vision_challenge_details.html)
