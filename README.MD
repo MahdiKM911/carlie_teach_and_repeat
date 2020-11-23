@@ -1,4 +1,4 @@
-# Algorithm Explanation
+# Algorithm V1 Explanation
 Our algorithm is based on the example algorithm but with a very minor adjustment. 
 
 We added a low-pass filter to the matched frame id!
@@ -13,10 +13,17 @@ self.smooth_frame_id += 0.1 *( self.current_matched_teach_frame_id - self.smooth
 self.current_matched_teach_frame_id = int(self.smooth_frame_id)
 ```
 
-## Excuse
-We ended up spending 80% of the competition getting carlie into a working state so that we could run the example code.
+This can be run via: roslaunch carlie_teach_and_repeat_mat repeat_v1.launch
 
-Unfortunately we only had time to make a minor adjustment.
+# Algorithm V2 Explanation
+This algorithm helps reduce the search space for matching along the trajectory more intelligently. We use the Euclidean distance to the starting point as a heuritsic to find the matching frames. At each point in time, we compare the current Euclidean distance to the starting point with those of the frames in the teach dataset. The top k closest ones are selected as candidates and the matching algorithm is run on those. 
+
+This can be run via: roslaunch carlie_teach_and_repeat_mat repeat_v2.launch
+
+## Excuse
+We ended up spending more than 80% of the competition getting carlie into a working state so that we could run the example code.
+
+Unfortunately we only had time to come up with two relatively minor improvements on the current matching method.
 
 ## Image Preprocessing Steps
 The teach and repeat phase image preprocessing steps are:
