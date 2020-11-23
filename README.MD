@@ -35,7 +35,7 @@ The core of our approach is based on normalised cross-correlation (NCC). We comp
 4. Compare the template to each image in the teach frame subset using NCC
     - keep track of the current best match (maximum score)
 5. The matched teach frame is the one with the maximum score
-6. The matched teach frame is put through a low-pass filter to reduce erroneous frame jumps
+6. **The matched teach frame is put through a low-pass filter to reduce erroneous frame jumps**
 
 The preprocessing steps are done on lines 209 to 213. The comparison is performed within a for loop, lines 220 to 233.
 
