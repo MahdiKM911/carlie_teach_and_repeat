@@ -7,6 +7,7 @@ import rospy
 import shutil
 import cv2 as cv
 from cv_bridge import CvBridge
+#import cv_bridge
 
 import teach_repeat.transform_tools as transform_tools
 from teach_repeat.teach_repeat_common import *
@@ -53,6 +54,7 @@ class TeachNode():
         self.VISUALISATION_ON = rospy.get_param('~visualisation_on', True)
         self.USE_GAMEPAD_FOR_RECORDING_SIGNAL = rospy.get_param('~use_gamepad_for_recording_signal', True)
         self.CV_BRIDGE = CvBridge()
+        #self.CV_BRIDGE = cv_bridge.CvBridge()
 
         # Setup save directory and dataset file
         self.save_path = os.path.join(self.BASE_PATH, self.ROUTE_NAME)

@@ -34,6 +34,7 @@ class RepeatNode():
         # VARIABLES
         self.update_visualisation = False
         self.current_matched_teach_frame_id = 0
+	self.smooth_frame_id = 0.0
         self.odom_topic_recieved = False
         self.frame_counter = 0
         self.frame_id = 0
@@ -191,6 +192,9 @@ class RepeatNode():
         self.current_matched_teach_frame_id, offsets = self.ImageMatching(img_bgr, relative_odom_trans)
         self.update_visualisation = True
 
+	#Smooth Frame Ids
+	self.smooth_frame_id += 0.1*(self.current_matched_teach_frame_id - self.smooth_frame_id)
+	self.current_matched_teach_frame_id = int(self.smooth_frame_id)
         # Controller
         self.Controller(self.current_matched_teach_frame_id, offsets)
 
