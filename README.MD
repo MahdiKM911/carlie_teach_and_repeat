@@ -6,7 +6,10 @@ We added a low-pass filter to the matched frame id!
 The low-pass filter reduces erroneous frame jumps.
 
 ```Python
+# Update low-pass filter
 self.smooth_frame_id += 0.1 *( self.current_matched_teach_frame_id - self.smooth_frame_id)
+
+# Read out the smoothed frame id
 self.current_matched_teach_frame_id = int(self.smooth_frame_id)
 ```
 
