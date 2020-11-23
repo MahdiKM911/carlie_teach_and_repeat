@@ -3,13 +3,13 @@
     <param name="max_forward_velocity" value="0.5" type="double"/>
 
     <!-- Teach Node -->
-    <node pkg="carlie_teach_and_repeat" type="repeat_example" name="repeat_node" output="screen">
+    <node pkg="carlie_teach_and_repeat" type="repeat_v2" name="repeat_node" output="screen">
         <!-- remap topics -->
         <remap from="odom" to="/pose_camera/odom/sample"/>
         <remap from="image_raw" to="/rgbd_camera/color/image_rect_color"/>
 
         <!-- image matcher arguments -->
-        <param name="process_every_nth_frame" value="1" type="int"/> 
+        <param name="process_every_nth_frame" value="2" type="int"/> 
         <param name="teach_dataset" value="/home/nvidia/Documents/route_1_processed/dataset.txt" type="string" />
         <param name="x_offset_scale_factor" value="0.0" type="double"/> 
         <param name="y_offset_scale_factor" value="0.02" type="double"/> 

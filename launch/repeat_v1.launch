@@ -1,0 +1,39 @@
+<launch>
+    <!-- Global Parameters -->
+    <param name="max_forward_velocity" value="0.5" type="double"/>
+
+    <!-- Teach Node -->
+    <node pkg="carlie_teach_and_repeat" type="repeat_v1" name="repeat_node" output="screen">
+        <!-- remap topics -->
+        <remap from="odom" to="/pose_camera/odom/sample"/>
+        <remap from="image_raw" to="/rgbd_camera/color/image_rect_color"/>
+
+        <!-- image matcher arguments -->
+        <param name="process_every_nth_frame" value="1" type="int"/> 
+        <param name="teach_dataset" value="/home/nvidia/Documents/route_1_processed/dataset.txt" type="string" />
+        <param name="x_offset_scale_factor" value="0.0" type="double"/> 
+        <param name="y_offset_scale_factor" value="0.02" type="double"/> 
+        <param name="yaw_offset_scale_factor" value="0.0" type="double"/> 
+
+        <param name="frame_search_window" value="3" type="int"/>
+        <param name="image_comparison_size_x" value="64" type="int"/>
+        <param name="image_comparison_size_y" value="48" type="int"/>
+        <param name="patch_portion" value="0.6" type="double"/> 
+
+        <!-- controller arguments -->
+        <param name="target_frame_lookahead" value="2" type="int"/> 
+        <param name="rho_gain" value="0.6" type="double"/> <!-- distance proportional gain -->
+        <param name="alpha_gain" value="0.7" type="double"/> <!-- angle to target frame position proportional gain -->
+        <param name="beta_gain" value="0.3" type="double"/> <!-- angle to target frame heading proportional gain -->
+
+        <!-- save repeat dataset arguments -->
+        <param name="save_repeat_dataset" value="False" type="bool"/>
+        <param name="save_image_resize_x" value="640" type="int"/> <!-- IMPORTANT! This is the image resize if saving the repeat data, not the size the images will be compared at -->
+        <param name="save_image_resize_y" value="480" type="int"/> <!-- IMPORTANT! This is the image resize if saving the repeat data, not the size the images will be compared at -->
+        <param name="base_path" value="/home/nvidia/Documents" type="string"/> 
+        <param name="route_name" value="route_1_repeat_a" type="string"/> 
+
+        <!-- other arguments -->
+        <param name="visualisation_on" value="True" type="bool"/> 
+    </node>
+</launch>
